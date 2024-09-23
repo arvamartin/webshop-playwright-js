@@ -1,0 +1,14 @@
+
+node_modules/
+
+test-results/
+playwright-report/
+screenshots/
+videos/
+trace.zip
+
+*.log
+*.tmp
+
+.vscode/
+
