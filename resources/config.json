@@ -1,0 +1,13 @@
+{
+  "sign_up_url": "https://automationexercise.com/signup",
+  "registered_username": "test",
+  "registered_email": "test@gmail.com",
+  "registered_password": "test1",
+  "registered_first_name": "test",
+  "registered_last_name": "testtest",
+  "registered_address": "test street",
+  "registered_state": "test",
+  "registered_city": "Budapest",
+  "registered_zipcode": "1122",
+  "registered_mobile_number": "06123456789"
+}
