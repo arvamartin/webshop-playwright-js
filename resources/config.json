@@ -1,13 +1,24 @@
 {
   "sign_up_url": "https://automationexercise.com/signup",
+  "username_to_register": "user112",
+  "email_to_register": "test@testEaxvample.com",
+  "password_to_register": "test123",
+  "day_to_register": "10",
+  "month_to_register": "10",
+  "year_to_register": "1998",
+  "first_name_to_register": "John",
+  "last_name_to_register": "Doe",
+  "address_to_register": "123 Main St",
+  "country_to_register": "Canada",
+  "state_to_register": "Rndom",
+  "city_to_register": "Los Angeles",
+  "zipcode_to_register": "90001",
+  "mobile_number_to_register": "06011234567",
+
+
+  "login_url": "https://automationexercise.com/login",
   "registered_username": "test",
-  "registered_email": "test@gmail.com",
-  "registered_password": "test1",
-  "registered_first_name": "test",
-  "registered_last_name": "testtest",
-  "registered_address": "test street",
-  "registered_state": "test",
-  "registered_city": "Budapest",
-  "registered_zipcode": "1122",
-  "registered_mobile_number": "06123456789"
+  "registered_email": "test@testEaxample.com",
+  "registered_password": "test123"
+  
 }
