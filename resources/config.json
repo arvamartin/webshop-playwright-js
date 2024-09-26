@@ -1,7 +1,8 @@
 {
   "sign_up_url": "https://automationexercise.com/signup",
+
   "username_to_register": "user112",
-  "email_to_register": "test@testEaxvample.com",
+  "email_to_register": "test@t-ebdp-nle.com",
   "password_to_register": "test123",
   "day_to_register": "10",
   "month_to_register": "10",
@@ -15,6 +16,23 @@
   "zipcode_to_register": "90001",
   "mobile_number_to_register": "06011234567",
 
+  "invalid_username_to_register": "u",
+  "invalid_email_to_register": "test@twdffdn-an-swc.com",
+  "invalid_password_to_register": "test123",
+  "invalid_day_to_register": "2",
+  "invalid_month_to_register": "11",
+  "invalid_year_to_register": "1998",
+  "invalid_first_name_to_register": "John",
+  "invalid_last_name_to_register": "Doe",
+  "invalid_address_to_register": "Street",
+  "invalid_country_to_register": "Israel",
+  "invalid_state_to_register": "Rndom",
+  "invalid_city_to_register": "Ca",
+  "invalid_zipcode_to_register": "90001",
+  "invalid_mobile_number_to_register": "0-60-1-12-34-5-67",
+
+  "email_in_invalid_format": "test-example-com",
+  
 
   "login_url": "https://automationexercise.com/login",
   "registered_username": "test",
