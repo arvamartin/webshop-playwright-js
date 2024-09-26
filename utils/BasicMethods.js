@@ -11,6 +11,7 @@ class BasicMethods {
         await dialog.accept();
       });
     }
+
   }
   
   export default BasicMethods;

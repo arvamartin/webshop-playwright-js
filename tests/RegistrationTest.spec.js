@@ -1,28 +1,25 @@
 import { test, expect, chromium } from "@playwright/test";
 import ConfigurationReader from "../utils/ConfigurationReader";
-import registrationPage from "../pages/RegistrationPage";
 import RegistrationPage from "../pages/RegistrationPage";
 
-test.describe('RegistrationTest', () => {
 
+
+test.describe.parallel('RegistrationTest', () => {
 
     let browser;
     let context;
     let page;
     let registrationPage;
 
-    test.beforeAll(async () => {
+
+    test.beforeEach(async () => {
         const playwright = await chromium.launch({ headless: false });
         browser = playwright;
         context = await browser.newContext();
         page = await context.newPage();
-
-    });
-
-    test.beforeEach(async () => {
         registrationPage = new RegistrationPage(page);
     });
-    
+
 
     test('successful registration with valid credentials', async () => {
         const username_to_register = ConfigurationReader.getProperty("username_to_register");
@@ -60,6 +57,69 @@ test.describe('RegistrationTest', () => {
         const actualResult = await registrationPage.getAccountCreatedElementText();
         expect(actualResult).toBe("Account Created!");
     });
+
+    test('unsuccessful registration with invalid credentials', async () => {
+        const invalid_username_to_register = ConfigurationReader.getProperty("invalid_username_to_register");
+        const invalid_email_to_register = ConfigurationReader.getProperty("invalid_email_to_register");
+        const invalid_password_to_register = ConfigurationReader.getProperty("invalid_password_to_register");
+        const invalid_day_to_register = ConfigurationReader.getProperty("invalid_day_to_register");
+        const invalid_month_to_register = ConfigurationReader.getProperty("invalid_month_to_register");
+        const invalid_year_to_register = ConfigurationReader.getProperty("invalid_year_to_register");
+        const invalid_first_name_to_register = ConfigurationReader.getProperty("invalid_first_name_to_register");
+        const invalid_last_name_to_register = ConfigurationReader.getProperty("invalid_last_name_to_register");
+        const invalid_address_to_register = ConfigurationReader.getProperty("invalid_address_to_register");
+        const invalid_country_to_register = ConfigurationReader.getProperty("invalid_country_to_register");
+        const invalid_state_to_register = ConfigurationReader.getProperty("invalid_state_to_register");
+        const invalid_city_to_register = ConfigurationReader.getProperty("invalid_city_to_register");
+        const invalid_zipcode_to_register = ConfigurationReader.getProperty("invalid_zipcode_to_register");
+        const invalid_mobile_number_to_register = ConfigurationReader.getProperty("invalid_mobile_number_to_register");
+
+        await registrationPage.registrationProcess(
+            invalid_username_to_register,
+            invalid_email_to_register,
+            invalid_password_to_register,
+            invalid_day_to_register,
+            invalid_month_to_register,
+            invalid_year_to_register,
+            invalid_first_name_to_register,
+            invalid_last_name_to_register,
+            invalid_address_to_register,
+            invalid_country_to_register,
+            invalid_state_to_register,
+            invalid_city_to_register,
+            invalid_zipcode_to_register,
+            invalid_mobile_number_to_register
+        );
+
+        const actualResult = await registrationPage.getAccountCreatedElementText();
+        expect(actualResult).not.toBe("Account Created!");
+    })
+
+
+    test('unsuccessful registration with invalid email format', async () => {
+        const username_to_register = ConfigurationReader.getProperty("username_to_register");
+        const email_in_invalid_format = ConfigurationReader.getProperty("email_in_invalid_format");
+
+        await registrationPage.invalidRegistrationProcess(username_to_register, email_in_invalid_format);
+
+        page.on('dialog', async dialog => {
+            expect(dialog.message()).toContain('Szerepeltesse a "@" jelet az e-mail-címben');
+            await dialog.dismiss();
+        });
+
+    });
+
+    test('unsuccessful registration with duplicate email', async () => {
+        const username_to_register = ConfigurationReader.getProperty("username_to_register");
+        const email_to_register = ConfigurationReader.getProperty("email_to_register"); 
+    
+        await registrationPage.invalidRegistrationProcess(username_to_register, email_to_register);
+        
+        const emailErrorMessageElement = await registrationPage.getEamilFieldErrorMessage();
+        const isErrorMessageVisible = await emailErrorMessageElement.isVisible(); 
+        expect(isErrorMessageVisible).toBe(true);
+    });
+    
 
 
 })

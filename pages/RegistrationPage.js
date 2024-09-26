@@ -24,6 +24,7 @@ export default class RegistrationPage{
         this.mobileNumberInput = page.locator("input[name='mobile_number']");
         this.createAccountBtn = page.locator("button[data-qa='create-account']");
         this.accountCreatedElement = page.locator('b:has-text("Account Created!")');
+        this.emailErrorMessage = page.locator("p:has-text('Email Address already exist!')");
         this.page = page;
     }
 
@@ -31,8 +32,7 @@ export default class RegistrationPage{
         mobileNumber){
         await BasicMethods.navigate(this.page, ConfigurationReader.getProperty("sign_up_url"));
         await this.acceptCookie();
-        await this.enterName(name)
-        await this.enterEmail(email)
+        await this.enterUserNameAndEmail(name, email);
         await this.clickOnSignUpBtn();
         await this.chooseTitle();
         await this.enterPassword(password);
@@ -41,11 +41,22 @@ export default class RegistrationPage{
         await this.enterFullAddress(address, country, state, city, zipCode)
         await this.enterMobileNumber(mobileNumber)
         await this.clickOnCreateAcoount();
+    }
 
+    async invalidRegistrationProcess(name, email){
+        await BasicMethods.navigate(this.page, ConfigurationReader.getProperty("sign_up_url"));
+        await this.acceptCookie();
+        await this.enterUserNameAndEmail(name, email);
+        await this.clickOnSignUpBtn();
     }
 
     async acceptCookie(){
         await this.consentBtn.click();
+    }
+
+    async enterUserNameAndEmail(name, email){
+        await this.enterName(name)
+        await this.enterEmail(email)
     }
 
     async enterName(name){
@@ -137,6 +148,14 @@ export default class RegistrationPage{
 
     async getAccountCreatedElementText(){
         return await this.accountCreatedElement.textContent();
+    }
+
+    async getEamilField(){
+        return await this.emailInput;
+    }
+
+    async getEamilFieldErrorMessage(){
+        return await this.emailErrorMessage;
     }
 
 }
