@@ -40,7 +40,7 @@ export default class RegistrationPage{
         await this.enterFirstAndLastName(firstName, lastName)
         await this.enterFullAddress(address, country, state, city, zipCode)
         await this.enterMobileNumber(mobileNumber)
-        await this.clickOnCreateAcoount();
+        await this.clickOnCreateAccount();
     }
 
     async invalidRegistrationProcess(name, email){
@@ -142,7 +142,7 @@ export default class RegistrationPage{
         await this.mobileNumberInput.fill(mobileNumber);
     }
 
-    async clickOnCreateAcoount(){
+    async clickOnCreateAccount(){
         await this.createAccountBtn.click();
     }
 
@@ -150,11 +150,11 @@ export default class RegistrationPage{
         return await this.accountCreatedElement.textContent();
     }
 
-    async getEamilField(){
+    async getEmailField(){
         return await this.emailInput;
     }
 
-    async getEamilFieldErrorMessage(){
+    async getEmailFieldErrorMessage(){
         return await this.emailErrorMessage;
     }
 

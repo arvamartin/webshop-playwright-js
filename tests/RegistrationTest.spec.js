@@ -115,7 +115,7 @@ test.describe.parallel('RegistrationTest', () => {
     
         await registrationPage.invalidRegistrationProcess(username_to_register, email_to_register);
         
-        const emailErrorMessageElement = await registrationPage.getEamilFieldErrorMessage();
+        const emailErrorMessageElement = await registrationPage.getEmailFieldErrorMessage();
         const isErrorMessageVisible = await emailErrorMessageElement.isVisible(); 
         expect(isErrorMessageVisible).toBe(true);
     });
