@@ -2,7 +2,7 @@
   "sign_up_url": "https://automationexercise.com/signup",
 
   "username_to_register": "user112",
-  "email_to_register": "test@t-ebdp-nle.com",
+  "email_to_register": "test@t-ebeebek.com",
   "password_to_register": "test123",
   "day_to_register": "10",
   "month_to_register": "10",
@@ -17,7 +17,7 @@
   "mobile_number_to_register": "06011234567",
 
   "invalid_username_to_register": "u",
-  "invalid_email_to_register": "test@twdffdn-an-swc.com",
+  "invalid_email_to_register": "test@tvwdfglm.com",
   "invalid_password_to_register": "test123",
   "invalid_day_to_register": "2",
   "invalid_month_to_register": "11",
@@ -36,7 +36,9 @@
 
   "login_url": "https://automationexercise.com/login",
   "registered_username": "test",
-  "registered_email": "test@testEaxample.com",
-  "registered_password": "test123"
+  "registered_email": "testExample@gmail.com",
+  "registered_password": "test123",
   
+  "invalid_email": "not_valid@example.com",
+  "invalid_password": "not_valid_password"
 }
