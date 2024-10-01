@@ -1,33 +1,42 @@
 
+const TIMEOUT = 500;
 
 export default class CartPage{
     constructor(page) {
-        this.firstCartProduct = page.locator('#cart_info_table tbody tr');
+        this.cartProductsRows = page.locator('#cart_info_table tbody tr');
         this.cartIsEmptyElement = page.locator('p.text-center').filter({ hasText: 'Cart is empty!' }).first();
         this.page = page;
     }
 
-    async getFirstCartProductDetails() {
-        const priceText = await this.firstCartProduct.locator('.cart_price p').textContent();
-        const nameText = await this.firstCartProduct.locator('.cart_description h4 a').textContent();
+    async getAllCartProductsDetails() {
+        const productDetails = [];
+        const productsCount = await this.cartProductsRows.count();
 
-        return {
-            name: nameText.trim(),
-            price: priceText.trim()
-        };
+        for (let i = 0; i < productsCount; i++) {
+            const row = this.cartProductsRows.nth(i);
+            const name = await row.locator('.cart_description h4 a').textContent();
+            const price = await row.locator('.cart_price p').textContent();
+
+            productDetails.push({
+                name: name.trim(),
+                price: price.trim(),
+            });
+        }
+
+        return productDetails;
     }
 
     async deleteProductFromCart() {
-        const products = await this.firstCartProduct.count();
-
-        for (let i = 0; i < products; i++) {
-            const deleteButton = this.firstCartProduct.nth(i).locator('.cart_delete a.cart_quantity_delete');
-            await deleteButton.click();
-            await this.page.waitForTimeout(500);
+        while (await this.cartProductsRows.count() > 0) {
+            const firstDeleteButton = this.cartProductsRows.first().locator('.cart_delete a.cart_quantity_delete');
+            await firstDeleteButton.click();
+            await this.page.waitForTimeout(TIMEOUT);
         }
     }
 
+
     async getCartIsEmptyText(){
+        await this.page.waitForTimeout(TIMEOUT)
         return await this.cartIsEmptyElement.textContent();
     }
 }

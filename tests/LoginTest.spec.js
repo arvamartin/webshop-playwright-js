@@ -19,6 +19,10 @@ test.describe.parallel('RegistrationTest', () => {
         homePage = new HomePage(page);
     });
 
+    test.afterEach(async () => {
+        browser.close();
+    })
+
 
     test('successful login with valid credentials', async () => {
         await loginPage.loginProcess(ConfigurationReader.getProperty("registered_email"), ConfigurationReader.getProperty("registered_password"));

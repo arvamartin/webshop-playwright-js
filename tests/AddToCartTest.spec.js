@@ -28,19 +28,31 @@ test.describe('RegistrationTest', () => {
         await loginPage.loginProcess(ConfigurationReader.getProperty("registered_email"), ConfigurationReader.getProperty("registered_password"));
     });
 
+    test.afterEach(async () => {
+        await cartPage.deleteProductFromCart();
+        browser.close();
+    })
+
     test('successfully add product to cart', async () => {
         const addedProduct = await productsPage.getFirstProductDetails();
-        await productsPage.addProductToCartProcess();
-        const productInCart = await cartPage.getFirstCartProductDetails();
+        await productsPage.addFirstProductToCartProcess();
+        const productInCart = await cartPage.getAllCartProductsDetails();
 
-        expect(addedProduct).toEqual(productInCart);
+        expect(productInCart).toEqual(addedProduct);
     })
 
     test('successfully remove product from cart', async () => {
-        await productsPage.addProductToCartProcess();
+        await productsPage.addFirstProductToCartProcess();
         await cartPage.deleteProductFromCart();
-       const cartIsEmptyText = await cartPage.getCartIsEmptyText();
+        const cartIsEmptyText = await cartPage.getCartIsEmptyText();
         expect(cartIsEmptyText).toBe(EXPECTED_RESULT)
+    })
+
+    test('successfully add multiple products to cart', async () => {
+        await productsPage.addFirstProductToCartProcess();
+        await productsPage.addSecondProductToCartProcess();
+        const productsInCart = await cartPage.getAllCartProductsDetails();
+        expect(productsInCart.length).toBeGreaterThan(1);
     })
 });
 

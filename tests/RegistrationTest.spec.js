@@ -20,6 +20,10 @@ test.describe.parallel('RegistrationTest', () => {
         registrationPage = new RegistrationPage(page);
     });
 
+    test.afterEach(async () => {
+        browser.close();
+    })
+
 
     test('successful registration with valid credentials', async () => {
         const username_to_register = ConfigurationReader.getProperty("username_to_register");
