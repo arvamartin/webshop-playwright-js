@@ -1,0 +1,46 @@
+{
+  "sign_up_url": "https://automationexercise.com/signup",
+
+  "username_to_register": "CREDENTIALS YOU CHOOSE",
+  "email_to_register": "CREDENTIALS YOU CHOOSE",
+  "password_to_register": "CREDENTIALS YOU CHOOSE",
+  "day_to_register": "CREDENTIALS YOU CHOOSE",
+  "month_to_register": "CREDENTIALS YOU CHOOSE",
+  "year_to_register": "CREDENTIALS YOU CHOOSE",
+  "first_name_to_register": "CREDENTIALS YOU CHOOSE",
+  "last_name_to_register": "CREDENTIALS YOU CHOOSE",
+  "address_to_register": "CREDENTIALS YOU CHOOSE",
+  "country_to_register": "CREDENTIALS YOU CHOOSE",
+  "state_to_register": "CREDENTIALS YOU CHOOSE",
+  "city_to_register": "CREDENTIALS YOU CHOOSE",
+  "zipcode_to_register": "CREDENTIALS YOU CHOOSE",
+  "mobile_number_to_register": "CREDENTIALS YOU CHOOSE",
+
+  "invalid_username_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_email_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_password_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_day_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_month_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_year_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_first_name_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_last_name_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_address_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_country_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_state_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_city_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_zipcode_to_register": "CREDENTIALS YOU CHOOSE",
+  "invalid_mobile_number_to_register": "CREDENTIALS YOU CHOOSE",
+
+  "email_in_invalid_format": "CREDENTIALS YOU CHOOSE",
+
+
+  "login_url": "https://automationexercise.com/login",
+  "registered_username": "CREDENTIALS YOU CHOOSE",
+  "registered_email": "CREDENTIALS YOU CHOOSE",
+  "registered_password": "CREDENTIALS YOU CHOOSE",
+
+  "invalid_email": "CREDENTIALS YOU CHOOSE",
+  "invalid_password": "CREDENTIALS YOU CHOOSE",
+
+  "products_url": "https://automationexercise.com/products"
+}
