@@ -3,7 +3,7 @@ import ConfigurationReader from "../utils/ConfigurationReader";
 import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 
-test.describe.parallel('RegistrationTest', () => {
+test.describe.parallel('LoginTest', () => {
     let browser;
     let context;
     let page;

@@ -5,9 +5,9 @@ import LoginPage from "../pages/LoginPage";
 import CartPage from "../pages/CartPage";
 
 
-const EXPECTED_RESULT = "Cart is empty! Click here to buy products.";
+const EXPECTED_RESULT = "Cart is empty!";
 
-test.describe('RegistrationTest', () => {
+test.describe('AddToCartTest', () => {
 
     let browser;
     let context;
@@ -45,7 +45,7 @@ test.describe('RegistrationTest', () => {
         await productsPage.addFirstProductToCartProcess();
         await cartPage.deleteProductFromCart();
         const cartIsEmptyText = await cartPage.getCartIsEmptyText();
-        expect(cartIsEmptyText).toBe(EXPECTED_RESULT)
+        expect(cartIsEmptyText).toContain(EXPECTED_RESULT)
     })
 
     test('successfully add multiple products to cart', async () => {

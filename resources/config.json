@@ -2,7 +2,7 @@
   "sign_up_url": "https://automationexercise.com/signup",
 
   "username_to_register": "user112",
-  "email_to_register": "test@t-ebeeibek.com",
+  "email_to_register": "test@t-ebeeixbek.com",
   "password_to_register": "test123",
   "day_to_register": "10",
   "month_to_register": "10",
@@ -17,7 +17,7 @@
   "mobile_number_to_register": "06011234567",
 
   "invalid_username_to_register": "u",
-  "invalid_email_to_register": "test@tvwdfkglm.com",
+  "invalid_email_to_register": "test@tvwdfxkglm.com",
   "invalid_password_to_register": "test123",
   "invalid_day_to_register": "2",
   "invalid_month_to_register": "11",

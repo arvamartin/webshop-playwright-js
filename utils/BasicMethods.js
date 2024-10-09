@@ -1,9 +1,7 @@
 
 class BasicMethods {
     static async navigate(page, url) {
-      await page.goto(url, {
-         waitUntil: "networkidle"
-      });
+      await page.goto(url);
     }
   
     static async confirm(page) {

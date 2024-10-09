@@ -4,7 +4,7 @@ const TIMEOUT = 500;
 export default class CartPage{
     constructor(page) {
         this.cartProductsRows = page.locator('#cart_info_table tbody tr');
-        this.cartIsEmptyElement = page.locator('p.text-center').filter({ hasText: 'Cart is empty!' }).first();
+        this.cartIsEmptyElement = page.locator("b:has-text('Cart is empty!')");
         this.page = page;
     }
 
