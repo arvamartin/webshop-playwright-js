@@ -12,5 +12,6 @@ trace.zip
 
 .vscode/
 
-resources\config.json
+resources/config.json
+
 /.idea/
