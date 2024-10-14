@@ -1,3 +1,4 @@
+import BasicMethods from "../utils/BasicMethods";
 
 const TIMEOUT = 500;
 
@@ -5,8 +6,14 @@ export default class CartPage{
     constructor(page) {
         this.cartProductsRows = page.locator('#cart_info_table tbody tr');
         this.cartIsEmptyElement = page.locator("b:has-text('Cart is empty!')");
+        this.checkOutBtn = page.locator("a:has-text('Proceed To Checkout')");
         this.page = page;
     }
+
+    async clickOnCheckOutBtn(){
+        await this.checkOutBtn.click();
+    }
+
 
     async getAllCartProductsDetails() {
         const productDetails = [];
@@ -27,6 +34,7 @@ export default class CartPage{
     }
 
     async deleteProductFromCart() {
+        await BasicMethods.navigate(this.page, "https://automationexercise.com/view_cart");
         while (await this.cartProductsRows.count() > 0) {
             const firstDeleteButton = this.cartProductsRows.first().locator('.cart_delete a.cart_quantity_delete');
             await firstDeleteButton.click();
