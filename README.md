@@ -28,7 +28,7 @@ npm list @playwright/test
 ```bash
 git clone git@github.com:arvamartin/webshop-playwright-js.git
 ```
-2.  Rename the file [simple.json](resources/simple.json) to config.json and fill in the credentials
+2.  Rename the file [simple.config.json](resources/simple.config.json) to config.json and fill in the credentials
 
 3.  If they are not already installed:
 ```bash

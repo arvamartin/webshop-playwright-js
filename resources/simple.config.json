@@ -42,5 +42,7 @@
   "invalid_email": "CREDENTIALS YOU CHOOSE",
   "invalid_password": "CREDENTIALS YOU CHOOSE",
 
-  "products_url": "https://automationexercise.com/products"
+  "products_url": "https://automationexercise.com/products",
+  "cart_url": "https://automationexercise.com/view_cart"
+
 }

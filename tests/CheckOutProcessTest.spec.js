@@ -4,9 +4,20 @@ import LoginPage from "../pages/LoginPage";
 import CartPage from "../pages/CartPage";
 import ConfigurationReader from "../utils/ConfigurationReader";
 import CheckOutPage from "../pages/CheckOutPage";
+import PaymentPage from "../pages/PaymentPage";
 
 
-test.describe('CheckOutProcessTest', () => {
+const COMMENT_MESSAGE = "test comment";
+
+const NAME_ON_CARD = "Test Tester";
+const CARD_NUMBER = "012345678-98765432-00000000";
+const CVC_NUMBER = "350";
+const MONTH = "10";
+const YEAR = "2026";
+
+
+const EXPECTED_MESSAGE = "Order Placed!";
+test.describe.parallel('CheckOutProcessTest', () => {
 
     let browser;
     let context;
@@ -15,6 +26,7 @@ test.describe('CheckOutProcessTest', () => {
     let loginPage;
     let cartPage;
     let checkOutPage;
+    let paymentPage;
 
     test.beforeEach(async () => {
         const playwright = await chromium.launch({headless: false});
@@ -25,13 +37,14 @@ test.describe('CheckOutProcessTest', () => {
         loginPage = new LoginPage(page);
         cartPage = new CartPage(page);
         checkOutPage = new CheckOutPage(page);
+        paymentPage = new PaymentPage(page);
 
         await loginPage.loginProcess(ConfigurationReader.getProperty("registered_email"), ConfigurationReader.getProperty("registered_password"));
         await productsPage.addFirstProductToCartProcess();
         await productsPage.addSecondProductToCartProcess();
     });
 
-    test.afterEach(async () => {
+    test.afterAll(async () => {
         await cartPage.deleteProductFromCart();
         browser.close();
     })
@@ -41,6 +54,15 @@ test.describe('CheckOutProcessTest', () => {
         const expectedTotalPrice = await checkOutPage.getTotalCartPrice();
         const actualTotalPrice = await checkOutPage.getFinalCartPrice();
         expect(actualTotalPrice).toBe(expectedTotalPrice);
+    })
+
+    test('successful checkout process', async()=>{
+        await cartPage.clickOnCheckOutBtn();
+        await checkOutPage.writeMessage(COMMENT_MESSAGE);
+        await checkOutPage.clickOnPlaceOrderBtn();
+        await paymentPage.fillOutPaymentForm(NAME_ON_CARD, CARD_NUMBER, CVC_NUMBER, MONTH, YEAR);
+        let actualConfirmMessage = await paymentPage.getOrderPlacesMessageText();
+        expect(actualConfirmMessage).toContain(EXPECTED_MESSAGE)
     })
 
 });

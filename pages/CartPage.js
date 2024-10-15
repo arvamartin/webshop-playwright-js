@@ -1,4 +1,5 @@
 import BasicMethods from "../utils/BasicMethods";
+import ConfigurationReader from "../utils/ConfigurationReader";
 
 const TIMEOUT = 500;
 
@@ -34,7 +35,7 @@ export default class CartPage{
     }
 
     async deleteProductFromCart() {
-        await BasicMethods.navigate(this.page, "https://automationexercise.com/view_cart");
+        await BasicMethods.navigate(this.page, ConfigurationReader.getProperty("cart_url"));
         while (await this.cartProductsRows.count() > 0) {
             const firstDeleteButton = this.cartProductsRows.first().locator('.cart_delete a.cart_quantity_delete');
             await firstDeleteButton.click();

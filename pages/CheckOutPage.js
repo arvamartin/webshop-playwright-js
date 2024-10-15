@@ -4,7 +4,9 @@ export default class CheckOutPage {
     constructor(page) {
         this.cartProductsRows = page.locator('#cart_info tbody tr');
         this.totalAmount = page.locator('tr:has(h4:has-text("Total Amount")) p.cart_total_price');
+        this.messageTextarea = page.locator('div#ordermsg:has-text("If you would like to add a comment about your order") textarea.form-control');
 
+        this.placeOrderBtn = page.locator("a[href='/payment']");
     }
 
 
@@ -33,6 +35,13 @@ export default class CheckOutPage {
         return totalPrice;
     }
 
+    async clickOnPlaceOrderBtn(){
+       await this.placeOrderBtn.click();
+    }
+
+    async writeMessage(message){
+        await this.messageTextarea.fill(message);
+    }
 
     async getFinalCartPrice() {
         const totalText = await this.totalAmount.textContent();
